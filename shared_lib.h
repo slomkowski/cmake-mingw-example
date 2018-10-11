@@ -4,7 +4,13 @@
 extern "C" {
 #endif
 
-__stdcall __declspec(dllexport) int multiplyTwoNumbers(int a, int b);
+#ifdef SHARED_LIB_SOURCE
+#define PUBLIC_FUNCTION __stdcall  __declspec(dllexport)
+#else
+#define PUBLIC_FUNCTION __stdcall __declspec(dllimport)
+#endif
+
+PUBLIC_FUNCTION int multiplyTwoNumbers(int a, int b);
 
 #ifdef __cplusplus
 }

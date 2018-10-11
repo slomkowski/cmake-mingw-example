@@ -18,8 +18,13 @@ pkg_check_modules(ZLIB "zlib")
 
 include_directories(${ZLIB_INCLUDE_DIRS})
 
-add_executable(executable executable.cpp shared_lib.h)
-target_link_libraries(executable ${ZLIB_LIBRARIES})
+add_executable(exec-runtime exec-runtime.cpp)
+target_link_libraries(exec-runtime ${ZLIB_LIBRARIES})
+
+add_executable(exec-compile-time exec-compile-time.cpp shared_lib.h)
+target_link_libraries(exec-compile-time ${ZLIB_LIBRARIES})
+target_link_libraries(exec-compile-time shared_lib.dll)
+
 
 add_library(shared_lib.dll SHARED shared_lib.cpp shared_lib.h)
 set_target_properties(shared_lib.dll PROPERTIES
