@@ -1,0 +1,11 @@
+*.exe
+*.o
+build
+dist
+
+cmake-build-*
+
+*.iml
+.idea/
+
+Doswrd32.cnv
